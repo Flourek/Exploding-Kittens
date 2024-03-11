@@ -1,5 +1,5 @@
 # Exploding-Kittens
-Flask and Socket-IO card game made after the popular game "Exploding Kittens". The game is in Polish, as it was made for an university assignment,. 
+Flask and Socket-IO card game made after the popular game "Exploding Kittens". The game is only available in Polish, as it was made for an university assignment.
 
 # The Game
 ![Game](Images/game.png)
