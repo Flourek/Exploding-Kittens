@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="lobby" class="container center">
+    <div  class="big-text ">
+        Dołącz do gry
+    </div>
+
+    <form id="joinForm">
+        <div id="playerlist-header">Wpisz nick:</div>
+        <input class="input" type="text" id="username" name="username" required>
+
+        <div id="playerlist-header">Wpisz kod:</div>
+        <input class="input" type="text" id="username" name="room" pattern="^[^\s]+$" required>
+
+        <button type="submit"  id="join-btn" class="sml-text button">Dołącz</button>
+    </form>
+
+    <br>
+
+    <img id="cat" src="{{url_for('static', filename='cat.jpg')}}" alt="cat">
+
+
+</div>
+    
+{% endblock %}
+
+
+
+
+
+
+

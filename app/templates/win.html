@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="land" class="container center">
+
+        <div class="big-text ">
+            Wygrywa  <i class="orange">{{ winner.name }}</i>
+        </div>
+
+        <div id="losers">
+
+            {% for player in losers %}
+                <div class="loser">
+
+                    <div class="sml-text">
+                        {{ player }}
+                    </div>
+
+                    <img  src="{{url_for('static', filename='cat.jpg')}}" alt="cat">
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div id="pat">
+            <div id="cat" class="sml-text">
+                {{ winner.name }}
+            </div>
+
+            <img id="cat" src="{{url_for('static', filename='cards/patcat.png')}}" alt="cat">
+        </div>
+
+    </div>
+    
+{% endblock %}
+
+
+
+
+
+

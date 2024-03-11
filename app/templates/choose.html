@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+
+    <div id="futureContainer">
+        
+        <a href="game.html">
+            <img id="return" src="assets/cards/return.png" alt="return">
+        </a>
+
+        <h1 class="big-text break">Wybierz gracza</h1>
+
+
+    <div>
+
+        <br>
+        <br>
+        {% for player in players %}
+            <a class="button sml-text" >{{ player.name }}</a>
+            <br>
+            <br>
+        {% endfor %}
+
+    </div>
+
+    <script>
+        var event = "{{ event }}";
+    </script>
+    <script src="{{static}}/script/choose.js"></script>
+
+
+
+{% endblock %}
+
+
+

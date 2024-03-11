@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+
+    <div id="futureContainer">
+        
+        <a href=" {{ url_for('main.game') }} ">
+            <img id="return" src="{{static}}/cards/return.png" alt="return">
+        </a>
+
+        <h1 class="big-text break">Co kryje przyszłość?</h1>
+
+            {% for card in cards %}
+                <a class="cardWrapper" >
+                    <img class="card futureCard{{ loop.index }}"   src="{{static}}/cards/{{ card.path }}" alt="">
+                </a>
+            {% endfor %}
+
+    <script src="{{static}}/script/cat.js"></script>
+
+    
+    </div>
+
+{% endblock %}
+
+
+

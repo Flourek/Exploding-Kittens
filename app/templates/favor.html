@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+{% block content %}
+
+
+    <div id="playarea">
+
+
+        <div id="favorText">
+            <div  class="big-text">
+               Oddaj graczu<i class="orange"> {{ target }}</i> jedną kartę
+            </div>
+        </div>
+
+
+    <i id="cardsText" class="gray">TWOJE KARTY:</i>
+
+    </div>
+
+
+    <div id="cards">
+
+        {% for card in cards %}
+
+            <a class="cardWrapper" onclick=" give_card({{loop.index - 1}}, '{{ target }}')" >
+                <img class="card"   src="{{static}}/cards/{{ card.path }}" alt="">
+            </a>
+        {% endfor %}
+
+    </div>
+
+    <script src="{{static}}/script/favor.js"></script>
+
+
+</body>
+</html>
+
+{% endblock %}

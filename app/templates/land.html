@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="land" class="container center">
+
+        <div class="big-text ">Eksplodujące Kotki</div>
+
+        <br>
+        <a class="sml-text button" href="{{url_for('main.create')}}">Stwórz nową grę </a>
+        <br><br>
+        <a class="sml-text button" href="{{url_for('main.join')}}">Dołącz do gry  </a>
+
+
+        <img id="cat" src="{{url_for('static', filename='cat.jpg')}}" alt="cat">
+    </div>
+    
+{% endblock %}
+
+
+
+
+
+

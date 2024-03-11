@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="lobby" class="container center">
+
+        <div class="big-text ">
+            Wyślij kod:
+            <i id="code">
+                {{ session['room'] }}
+            </i>
+        </div>
+
+        <div id="playerlist-header">
+            Gracze:
+        </div>
+        <div id="playerlist">
+            {% for player in clients %}
+                <p>{{ player }}</p>
+            {% endfor %}
+
+        </div>
+
+
+        {% if host %}
+            <a id="begin-button" class="sml-text button">Rozpocznij</a>
+        {% endif %}
+
+        <img id="cat" src="{{url_for('static', filename='cat.jpg')}}" alt="cat">
+
+
+        <script>
+            const socket = io();
+
+            $(function () {
+                socket.emit("user_join");
+            })
+        </script>
+
+         <script src="{{static}}/script/lobby.js"></script>
+
+    </div>
+
+{% endblock %}
+
+
+
+

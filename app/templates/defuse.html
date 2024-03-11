@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="explodeDefused">
+        <img id="explodeCard"   src="{{static}}/cards/explode1.png" alt="">
+
+        <img id="defuseCard"   src="{{static}}/cards/{{ defuseCard.path }}" alt="">
+
+    </div>
+
+    <div id="choosePlace" >
+        <div id="choosePlace-text"> Włóż eksplodującego kitku z powrotem do talii</div>
+        <hr>
+
+
+        <div id="stackCards">
+            <div class="stackText"> GÓRA</div>
+
+           {% if cards_count %}
+
+                {% for i in range(0, cards_count) %}
+                    <a class="stackItem" onclick="choose_index( {{loop.index - 1}})" ></a>
+                {% endfor %}
+
+            {% endif %}
+
+            <div  class="stackText"> SPÓD </div>
+        </div>
+
+    </div>
+
+
+    <script src="{{static}}/script/defuse.js"></script>
+
+
+{% endblock %}
+
+
+
+
+
+

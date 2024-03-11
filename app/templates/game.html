@@ -1,0 +1,95 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+{% block content %}
+
+
+    <div id="playarea">
+        <div id="turn">
+            {% if your_turn %}
+                <h1>
+                    <i class="orange"> Twoja kolej !  </i>
+                </h1>
+            {% else %}
+                <h1>
+                    Teraz gra: <i class="orange"> {{ turn.name }} </i>
+                </h1>
+            {% endif %}
+            <br>
+            
+            <h3 class="ps-1">
+                Gracze: 
+            </h3>
+            <div class="ps-2 ms-1">
+            <h1>
+                {% for player in players %}
+
+                    {% if player.alive %}
+                        <p>
+                            {{ player.name }}
+                        </p>
+                    {% else %}
+                        <p class="dead">
+                            {{ player.name }}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </h1>
+            </div>
+
+
+        </div>  
+
+        <div id="played">
+            {% for card, _ in played %}
+                <img class=" playedCard
+                             played{{ loop.index }}
+                             {{ "animateCard" if  loop.index == played|length }} "
+                             src="{{static}}/cards/{{ card.path }}" alt="">
+            {% endfor %}
+
+
+        </div> 
+
+        <div id="stack">
+            <a id="stackButton">
+                <div id="stackText">
+                    DOBIERZ
+                </div>
+
+                <img class="" src="{{static}}/cards/stack.png" alt="">
+            </a>
+        </div>
+
+    <i id="cardsText" class="gray">TWOJE KARTY:   </i>
+    
+    </div>
+
+
+
+
+
+    <div id="cards">
+
+        {% for card in cards %}
+
+            {% set animateClass = "cardNew" if request.args.get('new_card') and loop.index == 1 else "" %}
+
+            <a class="cardWrapper {{ animateClass }} " onclick=" play_card({{loop.index - 1}})" >
+                <img class="card"   src="{{static}}/cards/{{ card.path }}" alt="">
+            </a>
+        {% endfor %}
+
+    </div>
+
+    <script src="{{static}}/script/game.js"></script>
+
+
+</body>
+</html>
+
+{% endblock %}
+
+

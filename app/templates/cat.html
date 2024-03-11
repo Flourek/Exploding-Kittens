@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="futureContainer">
+
+        <a href="game.html">
+            <img id="return" src="assets/cards/return.png" alt="return">
+        </a>
+
+
+        <h1 class="big-text break">Zabierz <i class="orange"> {{ target }}</i> jedną kartę</h1>
+
+    </div>
+
+    <div id="favorContainer">
+        {% if cards_count %}
+
+            {% for i in range(0, cards_count) %}
+                <a class="cardWrapper favorItem" onclick="chooseCard( '{{ target }}', {{loop.index - 1}})" >
+                    <img class="card"   src="{{static}}/cards/stack.png" alt="">
+                </a>
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+    <div id="stealContainer">
+        <a id="steal" hidden class="sml-text button">Zabierz</a>
+    </div>
+
+
+    <script src="{{static}}/script/cat.js"></script>
+
+{% endblock %}
+
+
+
+

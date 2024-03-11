@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Eksplodujące Kotki{% endblock %}
+
+
+{% block content %}
+
+    <div id="explode">
+        <img id="boom"   src="{{static}}/cards/explode.gif" alt="">
+        <img id="explodeCard"   src="{{static}}/cards/explode1.png" alt="">
+    </div>
+
+
+    <script>
+
+        $(document).ready(function(){
+            // Wait for 3 seconds
+            setTimeout(function(){
+                // Redirect to the desired URL after 3 seconds
+                window.location.href = "/game";
+            }, 3000); // 3000 milliseconds = 3 seconds
+        });
+    </script>
+
+{% endblock %}
+
+
+
+
+
+

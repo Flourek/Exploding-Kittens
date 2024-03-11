@@ -1,0 +1,602 @@
+@font-face {
+    font-family: Celeste;
+    src: url("./Renogare-Regular.otf") format("opentype");
+}
+
+* {
+    font-family: Celeste;
+}
+
+h1, h2, h3 {
+    margin: 0px 0px;
+}
+
+body {
+  overflow-y: hidden;
+  margin: 0;
+  
+}
+
+.big-text {
+    font-size: 5rem
+}
+
+.sml-text {
+    font-size: 3rem
+}
+
+.orange {
+    color: coral;
+    font-style: normal;
+}
+
+.gray{
+  color: #b1b1b1;
+}
+
+#join-btn {
+  margin-top: 0px;
+}
+
+ @keyframes disappear {
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+}
+
+
+#errorPopup {
+    position: absolute;
+    left: 30%;
+    bottom: 5%;
+    width:  40%;
+    text-align: center;
+    border: black solid 1px;
+    background: white;
+    border-radius: 20px;
+    color: red;
+    font-size: 1rem;
+    animation: disappear 5s  forwards;
+}
+
+#debug {
+    display: none;
+    position: absolute;
+    border: black solid 1px;
+    width: 200px;
+    top: 50px;
+    left: 50px;
+    padding: 5px;
+}
+
+.button {
+    background-color: coral;
+    color: #373737;
+    width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 50%;
+    text-decoration: none;
+}
+
+
+.button:hover {
+    background-color: rgb(249, 101, 47);
+    color: #373737;
+}
+
+#cat{
+    position: fixed;
+    width: 20vw;
+    bottom: 0px;
+    right: 0px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 10%;
+    padding: 10px;
+  }
+
+
+#lobby{
+    margin-top: 5%;
+   
+}
+  
+#code{
+    color: coral;
+    font-size: 6rem;
+    font-style: normal;
+}
+
+.input{
+    width: 50%;
+    min-height: 10vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+    border: #373737 solid 1px;
+    font-size: 3rem;
+}
+
+#playerlist {
+    width: 50%;
+    min-height: 40vh;
+    margin-left: 23%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+    border: #373737 solid 1px;
+}
+
+#playerlist-header{
+    text-align: left;
+    margin-left: 23%;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+#playerlist p {
+    font-size: 2rem;
+    margin: 20px 0px;
+}
+
+a, a:visited {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* game.html */
+
+#playarea{
+  border-bottom: #373737 solid 1px;
+  margin: 0px;
+  padding: 0px;
+  /* overflow-x: hidden; */
+  white-space: nowrap;
+  min-height: 60vh;
+}
+
+#turn {
+  margin-left: 2rem;
+  position: absolute;
+  top: 2rem;
+}
+
+#turn p {
+    margin: 0 0;
+}
+
+.dead {
+     text-decoration: line-through red solid 5px;
+}
+
+#played{
+  display: inline-block;
+  margin-left: 35%;
+}
+
+#stack{
+  display: inline-block;
+  position: fixed;
+  right: 0px;
+  border-left: #373737 solid 1px;
+  max-width: 30vw;
+  min-height: 60vh;
+  background-color: white;
+  color: black;
+}
+
+#stack:hover {
+  filter: brightness(0.9);
+}
+
+#stackText{
+  margin-left: 20%;
+  font-size: 40px;
+}
+
+#stack img {
+  max-height: 50vh;
+  max-width: 30vw;
+  margin: 0px 1rem;
+}
+
+
+
+
+@media screen and (max-width: 75em) {
+
+  #played {
+    position: absolute;
+    margin-left: 45%; 
+    margin-top: 5%; 
+  }
+
+  .playedCard {
+    height: 40vh;
+  }
+
+
+  #stack img {
+   display: none;
+  }
+
+  #stack {
+    width: 5em;
+    background-color: rgb(212, 37, 37);
+    /* overflow: hidden; */
+  }
+  
+  #stackText{
+    color: white;
+    margin: auto;
+    width: 9vh;
+    margin-top: 2vh;
+    text-orientation: upright;
+    writing-mode: vertical-rl;  /* Vertical text flow */
+    font-size: 7vh;
+    container-name: sidebar;
+    /* overflow: hidden; */
+  }  
+
+}
+
+
+@keyframes placeCard1 {
+  0% {transform: scale(3) rotateZ(73deg); opacity: 0%;}
+  100% {transform: scale(1) rotateZ(-9deg); opacity: 100%;}
+}
+
+@keyframes placeCard2 {
+  0% {transform: scale(3) rotateZ(73deg); opacity: 0%;}
+  100% {transform: scale(1) rotateZ(7deg); opacity: 100%;}
+}
+
+@keyframes placeCard3 {
+  0% {transform: scale(3) rotateZ(73deg); opacity: 0%;}
+  100% {transform: scale(1) rotateZ(-5deg); opacity: 100%;}
+}
+
+
+.played1 {
+    left: 31% !important;
+    transform: scale(1) rotateZ(-9deg) ;
+    animation-name: placeCard1;
+}
+
+.played2 {
+    left: 39% !important;
+    transform: scale(1) rotateZ(7deg) ;
+    animation-name: placeCard2;
+}
+
+.played3 {
+    left: 35% !important;
+    transform: scale(1) rotateZ(-5deg) ;
+    animation-name: placeCard3;
+}
+
+.animateCard {
+    animation-duration: 1s;
+}
+
+
+.playedCard{
+  max-height: 50vh;
+  margin: 2rem 1rem;
+  top: 1%;
+  left: 35%;
+  position: absolute;
+}
+
+#cardsText{
+  position: absolute;
+  left: 1rem;
+  bottom: 40.5vh;
+}
+
+#cards{
+  display: flex;
+  height: 40vh;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  overflow-x: auto;
+}
+
+.card {
+  flex: 1;
+  width: auto;
+  height: 35vh;
+  transition: all 0.2s;
+  margin-right: 1rem;
+}
+
+@keyframes cardNew {
+  0% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cardNew {
+  animation: cardNew 1s ease-in-out forwards;
+}
+
+.cardWrapper:hover > .card{
+  /* animation-name: scaleCard;
+  animation-duration: 0.2s; */
+  animation-direction:alternate;
+  transform: translateY(-20px) scale(1.05);
+
+}
+
+
+/* FAVOR */
+
+#favorText {
+    display: inline-block;
+    width: 100%;
+}
+
+#favorText .big-text {
+    margin: auto;
+    margin-top: 20vh;
+    text-align: center;
+
+}
+
+.favorChosen img {
+    transform: translateY(-20px) scale(1.05) !important;
+    border: solid orange 5px !important;
+}
+
+.favorItem img {
+    border: solid white 5px;
+}
+
+#steal {
+    width: fit-content;
+    margin: 5% auto;
+}
+
+#stealContainer {
+    display: flex;
+  justify-content: center;
+}
+
+#favorContainer {
+    margin-top: 5%;
+    padding: 0 2%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.favorItem {
+    min-width: 50px; /* Set the minimum width for the children */
+    padding: 10px; /* Add padding for better visibility */
+    margin-right: 10px; /* Add margin to create space between items */
+    position: relative; /* To enable overlapping */
+}
+
+/* WIN */
+
+#losers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    left: 10%;
+    bottom: 0;
+}
+
+.loser {
+    margin-right: 3vw;
+
+}
+
+.loser img {
+    width: 10vw;
+}
+
+#pat div {
+    bottom: 42rem;
+}
+
+#pat #cat{
+    width: 35rem;
+}
+
+@media screen and (max-width: 90em) {
+
+    #losers {
+        display: none;
+    }
+
+
+}
+
+
+
+/* FUTURE */
+
+#return {
+  position: absolute;
+  width: 15em;
+  left: 3em;
+  top: 3.25em;
+}
+
+#return:hover{
+  filter: brightness(0.9);
+}
+
+
+#futureContainer {
+  display: flex;
+  flex-flow: wrap;
+  margin: auto;
+  margin-top: 10vh;
+  width: 80%;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+#futureContainer h1 {
+    margin-bottom: 10vh;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start opacity */
+    }
+    to {
+        opacity: 1; /* End opacity */
+    }
+}
+
+.futureCard1 {
+    opacity: 0; /* Start at opacity 0 */
+    animation: fadeIn 1s forwards;
+}
+
+.futureCard2 {
+    opacity: 0; /* Start at opacity 0 */
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+}
+
+.futureCard3 {
+    opacity: 0; /* Start at opacity 0 */
+    animation: fadeIn 1s forwards;
+    animation-delay: 2s;
+}
+
+/*  EXPLODE  */
+
+#explodeCard{
+    position: absolute;
+    left: 40%;
+    width: 20rem;
+}
+
+#defuseCard {
+    position: absolute;
+    opacity: 0;
+    animation: placeCard 1s forwards;
+    animation-delay: 0.5s;
+    left: 42%;
+    width: 17rem;
+}
+
+#explodeDefused {
+    position: absolute;
+    top: 20%;
+    width: 50%;
+
+}
+
+#choosePlace {
+    position: absolute;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+}
+
+#choosePlace-text{
+    font-size: 2rem;
+    text-align: center;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 1rem;
+}
+
+.stackText{
+    font-size: 2rem;
+    text-align: center;
+    width: 70%;
+}
+
+#stackCards {
+    width: 50%;
+     margin: 0 35%;
+}
+
+.stackItem{
+    background: red;
+    display: block;
+    height: 0.5rem;
+    margin: 0.5rem 0.1rem;
+    width: 15rem;
+    border: white solid 3px;
+}
+
+.stackItem:hover{
+    border: red solid 3px;
+
+
+}
+
+#explode{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+}
+
+
+#explode #boom {
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    height: 80rem;
+
+}
+
+
+.break {
+  width: 100%;
+}
+
+/* Padding classes */
+.pe-1 {
+    padding-right: 0.25rem;
+  }
+  
+  .ps-1 {
+    padding-left: 0.25rem;
+  }
+  
+  .pe-2 {
+    padding-right: 0.5rem;
+  }
+  
+  .ps-2 {
+    padding-left: 0.5rem;
+  }
+  
+  /* Margin classes */
+  .me-1 {
+    margin-right: 0.25rem;
+  }
+  
+  .ms-1 {
+    margin-left: 0.25rem;
+  }
+  
+  .me-2 {
+    margin-right: 0.5rem;
+  }
+  
+  .ms-2 {
+    margin-left: 0.5rem;
+  }
+  
